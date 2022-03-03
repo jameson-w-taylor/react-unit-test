@@ -1,0 +1,7 @@
+{
+  "name": "react-unit-test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
