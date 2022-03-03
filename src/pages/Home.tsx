@@ -1,8 +1,16 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, useIonModal } from '@ionic/react';
+import MyModal, { MyModalProps } from './MyModal';
 import './Home.css';
 
 const Home: React.FC = () => {
+  const [presentModal, dismissModal] = useIonModal(MyModal, {
+    onDismiss: () => handleOnModalDismiss(),
+  } as MyModalProps);
+
+  const handleOnModalDismiss = () => {
+    dismissModal();
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -16,7 +24,9 @@ const Home: React.FC = () => {
             <IonTitle size="large">Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        <IonButton onClick={() => presentModal()} data-testid="openModalButton">
+          Open Modal
+        </IonButton>
       </IonContent>
     </IonPage>
   );

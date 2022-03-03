@@ -3,6 +3,8 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
+import { setupIonicReact } from '@ionic/react';
+import { mockIonicReact } from '@ionic/react-test-utils';
 
 // Mock matchmedia
 window.matchMedia = window.matchMedia || function() {
@@ -12,3 +14,7 @@ window.matchMedia = window.matchMedia || function() {
       removeListener: function() {}
   };
 };
+
+// TODO: Shouldn't @ionic/react-test-utils do this for you in mockIonicReact()?
+setupIonicReact();
+mockIonicReact();
